@@ -15,7 +15,7 @@ The original use case for this was needing to automate the acquisition and use o
 ## Install
 
 ```bash
-go get -u https://github.com/liamg/autopass
+go get -u github.com/liamg/autopass
 ```
 
 ## Example
