@@ -67,10 +67,15 @@ func Run(cmd string, password string, expectedPrompt string, expectedFailure str
 				continue
 			}
 			data += string(buf[:n])
-			if autoConfirmHostAuthenticity && !confirmed && strings.Contains(data, "The authenticity of host ") {
-				confirmed = true
-				data = ""
-				ptmx.Write([]byte("yes\n"))
+			if !confirmed && strings.Contains(data, "The authenticity of host ") {
+				if autoConfirmHostAuthenticity {
+					confirmed = true
+					data = ""
+					ptmx.Write([]byte("yes\n"))
+				} else {
+					errChan <- fmt.Errorf("host authenticity confirmation required, but it was disabled")
+					break
+				}
 			} else if !entered && strings.Contains(data, expectedPrompt) {
 				entered = true
 				data = ""
