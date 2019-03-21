@@ -1,4 +1,4 @@
-# Autopass: Automatic entry of non-interactive passwords
+# SSHOTP: Automatic entry of non-interactive passwords
 
 Autopass is essentially a go implementation of [sshpass](https://linux.die.net/man/1/sshpass), though unlike sshpass it doesn't restrict itself to SSH logins. It can supply a password to any process with an identifiable password prompt.
 
