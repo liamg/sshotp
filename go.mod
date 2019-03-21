@@ -1,4 +1,4 @@
-module github.com/liamg/autopass
+module github.com/liamg/sshotp
 
 require (
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect
