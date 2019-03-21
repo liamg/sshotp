@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/liamg/autopass/app"
+	"github.com/liamg/sshotp/app"
 	"github.com/spf13/cobra"
 )
 
@@ -16,9 +16,9 @@ var timeout time.Duration
 var disableConfirmHostAuthenticity bool
 
 var rootCmd = &cobra.Command{
-	Use:   "autopass",
+	Use:   "sshotp",
 	Short: "Enter passwords to commands non-interactively",
-	Long:  `Autopass is essentially a go implementation of sshpass (https://linux.die.net/man/1/sshpass), though unlike sshpass it doesn't restrict itself to SSH logins. It can supply a password to any process with an identifiable password prompt.`,
+	Long:  `SSHOTP is essentially a go implementation of sshpass (https://linux.die.net/man/1/sshpass), though unlike sshpass it doesn't restrict itself to SSH logins. It can supply a password to any process with an identifiable password prompt.`,
 	Run: func(cmd *cobra.Command, args []string) {
 
 		command := strings.Join(args, " ")
