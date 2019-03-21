@@ -15,24 +15,24 @@ The original use case for this was needing to automate the acquisition and use o
 ## Install
 
 ```bash
-go get -u github.com/liamg/autopass
+go get -u github.com/liamg/sshotp
 ```
 
 ## Example
 
 ```bash
-autopass --password mypassword123 "ssh me@myserver.mine -p 2222"
+sshotp --password mypassword123 "ssh me@myserver.mine -p 2222"
 ```
 
 ## Usage
 
 ```
 Usage:
-  autopass [flags]
+  sshotp [flags]
 
 Flags:
-      --disable-ssh-host-confirm   autopass will automatically confirm the authenticity of SSH hosts unless this option is specified
-      --env                        use value of $AUTOPASS environment variable as password
+      --disable-ssh-host-confirm   sshotp will automatically confirm the authenticity of SSH hosts unless this option is specified
+      --env                        use value of $SSHOTP environment variable as password
   -h, --help                       help for autopass
       --password string            plaintext password (not recommended)
       --timeout duration           timeout length to wait for prompt/confirmation (default 10s)
