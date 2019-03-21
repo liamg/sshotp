@@ -29,7 +29,7 @@ var rootCmd = &cobra.Command{
 		}
 
 		if useEnv {
-			password = os.Getenv("AUTOPASS")
+			password = os.Getenv("SSHOTP")
 		}
 
 		if err := app.Run(command, password, "assword", "denied", timeout, !disableConfirmHostAuthenticity); err != nil {
@@ -48,7 +48,7 @@ func Execute() {
 
 func init() {
 	rootCmd.PersistentFlags().StringVar(&password, "password", "", "plaintext password (not recommended)")
-	rootCmd.PersistentFlags().BoolVar(&useEnv, "env", false, "use value of $AUTOPASS environment variable as password")
+	rootCmd.PersistentFlags().BoolVar(&useEnv, "env", false, "use value of $SSHOTP environment variable as password")
 	rootCmd.PersistentFlags().DurationVar(&timeout, "timeout", time.Second*10, "timeout length to wait for prompt/confirmation")
-	rootCmd.PersistentFlags().BoolVar(&disableConfirmHostAuthenticity, "disable-ssh-host-confirm", false, "autopass will automatically confirm the authenticity of SSH hosts unless this option is specified")
+	rootCmd.PersistentFlags().BoolVar(&disableConfirmHostAuthenticity, "disable-ssh-host-confirm", false, "sshotp will automatically confirm the authenticity of SSH hosts unless this option is specified")
 }
