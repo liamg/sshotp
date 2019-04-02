@@ -74,7 +74,7 @@ func Run(cmd string, passwords []string, options *Options) error {
 	}
 	defer func() { _ = terminal.Restore(int(os.Stdin.Fd()), oldState) }()
 
-	if _, err := ptmx.Write([]byte(cmd + "\n")); err != nil {
+	if _, err := ptmx.Write([]byte(cmd + "; exit\n")); err != nil {
 		return err
 	}
 
@@ -145,6 +145,7 @@ func enterPassword(ptmx *os.File, password string, options *Options, redirectPip
 	select {
 	case newBuffered := <-readyChan:
 		if redirectPipes {
+			os.Stdout.WriteString(newBuffered)
 			go func() { _, _ = io.Copy(ptmx, os.Stdin) }()
 			_, _ = io.Copy(os.Stdout, ptmx)
 			return "", nil
