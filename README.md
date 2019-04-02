@@ -9,8 +9,7 @@ The original use case for this was needing to automate the acquisition and use o
 ## Requirements
 
 - Mac/Linux
-- `/bin/bash`
-- Go 1.11 (to build)
+- Go 1.11+ (to build)
 
 ## Install
 

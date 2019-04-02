@@ -31,8 +31,9 @@ var rootCmd = &cobra.Command{
 		if useEnv {
 			password = os.Getenv("SSHOTP")
 		}
-
-		if err := app.Run(command, password, "assword", "denied", timeout, !disableConfirmHostAuthenticity); err != nil {
+		options := app.DefaultOptions
+		options.AutoConfirmHostAuthenticity = !disableConfirmHostAuthenticity
+		if err := app.Run(command, []string{password}, options); err != nil {
 			fmt.Println("Error: " + err.Error())
 			os.Exit(1)
 		}
